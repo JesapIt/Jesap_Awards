@@ -113,150 +113,142 @@ col1, col2, col3 = st.columns([1,7,1])
 #     image = Image.open("pangocciolo.png")
 #     new_image = image.resize((100, 100))
 #     st.image(new_image)
-
-target_date = datetime(2024, 1, 20, 21, 0, 0)
-
-# Get the current time
+target_time = datetime(2024, 1, 20, 21, 0, 0)
 current_time = datetime.now()
+time_remaining = target_time - current_time
 
-# Calculate the difference in seconds
-difference = target_date - current_time
-total_seconds = int(difference.total_seconds())
-
-# Placeholder for the countdown
-placeholder = st.empty()
-
-# Countdown loop
-for remaining_seconds in range(total_seconds, 0, -1):
-    hours, remainder = divmod(remaining_seconds, 3600)
+if time_remaining > timedelta(0):  # Check if the target time is in the future
+    # Format the time remaining as H:M:S
+    hours, remainder = divmod(int(time_remaining.total_seconds()), 3600)
     minutes, seconds = divmod(remainder, 60)
-    placeholder.metric(label="Countdown", value=f"{hours:02d}:{minutes:02d}:{seconds:02d}")
-    time.sleep(1)
-
-# Message when countdown is over
-placeholder.metric(label="Countdown", value="00:00:00")
-st.write("Countdown complete!")
-
-
-
-st.divider()
-conn = st.connection("gsheets", type=GSheetsConnection)
-
-# Lettura dei dati esistenti da Google Sheets
-existing_data = conn.read(worksheet="Foglio1", usecols=list(range(4)), ttl=5)
-existing_data = existing_data.dropna(how="all")
-
-
-
-
-
-
-
-
-
- # Campo di input per l'email nella sidebar
-
-
-    
-
-
-st.markdown('<h5> Inserisci la tua mail <span style="color: #800080; ">JESAP</span> per iniziare a comporre la tua squadra</h5>', unsafe_allow_html=True)
-email = st.text_input("Email:")
-
-
-
-
-
-# Bottone di accesso nella sidebar
-
-if email and  email.lower() in  existing_data.values:
-
-    if 'count' not in st.session_state:
-        st.session_state.count = 0
-
-    nome = email.split('.')[0]
-    capitalized_nome= nome[0].upper() + nome[1:]
-    st.markdown(f'<h3> ⚡️ Benvenuto <span style="color: #D4AF37;">{capitalized_nome}</span>, hai a disposizione <span style="color: #D4AF37;">25 crediti</span></h3>', unsafe_allow_html=True)
-
-    giocatori_selezionati = []
-    crediti_utilizzati = 0
-    widget_counter = 0
-    spazio = [1]
-
-    # Primo giocatore
-    for i in spazio:
-        giocatori_disponibili = [g for g in giocatori if g["crediti"] <= (25 - crediti_utilizzati)]
-        widget_counter += 1
-        giocatore_scelto = st.selectbox(f"Seleziona un giocatore (hai ancora {25-crediti_utilizzati} crediti):", [g["nome"] for g in giocatori_disponibili], key=f"giocatore_select_{widget_counter}", index=None)
-        prezzo_giocatore = 0
-        for giocatore in giocatori_disponibili:
-            if giocatore["nome"] == giocatore_scelto:
-                prezzo_giocatore = giocatore["crediti"]
-                giocatori_selezionati.append(giocatore)
-                giocatori.remove(giocatore)
-
-                crediti_utilizzati += prezzo_giocatore
-                if crediti_utilizzati <= 20:
-                    spazio.append(widget_counter+1)
-
-                col1, col2, col3 = st.columns([1,1,1])
-
-                with col1:
-                    st.write("")
-
-                with col2:
-                    player_photo_path = f"photos/{giocatore['foto']}" 
-                    if(giocatore['foto'] in os.listdir("photos")):
-                        st.image(player_photo_path, caption=giocatore["nome"].split('(')[0], use_column_width=False, width=200)
-
-                with col3:
-                    st.write("")
-                
-        
-        
-
-        
-
-        
-
+    st.metric(label="Countdown", value=f"{hours:02d}:{minutes:02d}:{seconds:02d}")
 
 
 
 
 
     st.divider()
-    if giocatori_selezionati != []:
+    conn = st.connection("gsheets", type=GSheetsConnection)
 
-        st.markdown(f'<h3> ✨ <span style="color: #D4AF37;">Il tuo Team </span>✨ (hai speso in totale {crediti_utilizzati} crediti):</h3>', unsafe_allow_html=True)
-
-
-        for giocatore in giocatori_selezionati:
-                st.markdown(f'<h5> ⭐️ {giocatore["nome"]}</h5>', unsafe_allow_html=True)
-
-        st.markdown( " >Quando hai finito clicca sul bottone 'Salva' per caricare la tua squadra. ", unsafe_allow_html=True)
-        submit_button = st.button("🕺 Salva 💃")
+    # Lettura dei dati esistenti da Google Sheets
+    existing_data = conn.read(worksheet="Foglio1", usecols=list(range(4)), ttl=5)
+    existing_data = existing_data.dropna(how="all")
 
 
-        if submit_button :
-                st.balloons()
-                # Ottieni l'indice della riga corrispondente all'email fornita
-                index_to_update = existing_data[existing_data['Email'] == email].index
-                #st.write(index_to_update)
 
-                if crediti_utilizzati <= 25:
-                    # Ottieni i nomi dei giocatori selezionati come una lista di stringhe
-                    giocatori_selezionati_nomi = [giocatore["nome"] for giocatore in giocatori_selezionati]
-                    # Converti la lista di nomi in una stringa separata da virgole
-                    giocatori_selezionati_stringa = ", ".join(giocatori_selezionati_nomi)
 
-                    # Aggiorna solo la colonna "Giocatore I" della riga corrispondente
-                    existing_data.loc[index_to_update, "Giocatore I "] = giocatori_selezionati_stringa
-                    conn.update(worksheet="Foglio1", data=existing_data)
-                    st.success("Foglio di Google Sheets aggiornato con successo! 💪")
-                else:
-                    st.warning("I giocatori selezionati hanno un costo maggiore di quanto puoi spendere")
+
+
+
+
+
+    # Campo di input per l'email nella sidebar
+
+
+        
+
+
+    st.markdown('<h5> Inserisci la tua mail <span style="color: #800080; ">JESAP</span> per iniziare a comporre la tua squadra</h5>', unsafe_allow_html=True)
+    email = st.text_input("Email:")
+
+
+
+
+
+    # Bottone di accesso nella sidebar
+
+    if email and  email.lower() in  existing_data.values:
+
+        if 'count' not in st.session_state:
+            st.session_state.count = 0
+
+        nome = email.split('.')[0]
+        capitalized_nome= nome[0].upper() + nome[1:]
+        st.markdown(f'<h3> ⚡️ Benvenuto <span style="color: #D4AF37;">{capitalized_nome}</span>, hai a disposizione <span style="color: #D4AF37;">25 crediti</span></h3>', unsafe_allow_html=True)
+
+        giocatori_selezionati = []
+        crediti_utilizzati = 0
+        widget_counter = 0
+        spazio = [1]
+
+        # Primo giocatore
+        for i in spazio:
+            giocatori_disponibili = [g for g in giocatori if g["crediti"] <= (25 - crediti_utilizzati)]
+            widget_counter += 1
+            giocatore_scelto = st.selectbox(f"Seleziona un giocatore (hai ancora {25-crediti_utilizzati} crediti):", [g["nome"] for g in giocatori_disponibili], key=f"giocatore_select_{widget_counter}", index=None)
+            prezzo_giocatore = 0
+            for giocatore in giocatori_disponibili:
+                if giocatore["nome"] == giocatore_scelto:
+                    prezzo_giocatore = giocatore["crediti"]
+                    giocatori_selezionati.append(giocatore)
+                    giocatori.remove(giocatore)
+
+                    crediti_utilizzati += prezzo_giocatore
+                    if crediti_utilizzati <= 20:
+                        spazio.append(widget_counter+1)
+
+                    col1, col2, col3 = st.columns([1,1,1])
+
+                    with col1:
+                        st.write("")
+
+                    with col2:
+                        player_photo_path = f"photos/{giocatore['foto']}" 
+                        if(giocatore['foto'] in os.listdir("photos")):
+                            st.image(player_photo_path, caption=giocatore["nome"].split('(')[0], use_column_width=False, width=200)
+
+                    with col3:
+                        st.write("")
+                    
+            
             
 
-elif email and email not in  existing_data.values:
-    st.warning("Inserire un'email vailda JESAP") 
+            
+
+            
+
+
+
+
+
+
+        st.divider()
+        if giocatori_selezionati != []:
+
+            st.markdown(f'<h3> ✨ <span style="color: #D4AF37;">Il tuo Team </span>✨ (hai speso in totale {crediti_utilizzati} crediti):</h3>', unsafe_allow_html=True)
+
+
+            for giocatore in giocatori_selezionati:
+                    st.markdown(f'<h5> ⭐️ {giocatore["nome"]}</h5>', unsafe_allow_html=True)
+
+            st.markdown( " >Quando hai finito clicca sul bottone 'Salva' per caricare la tua squadra. ", unsafe_allow_html=True)
+            submit_button = st.button("🕺 Salva 💃")
+
+
+            if submit_button :
+                    st.balloons()
+                    # Ottieni l'indice della riga corrispondente all'email fornita
+                    index_to_update = existing_data[existing_data['Email'] == email].index
+                    #st.write(index_to_update)
+
+                    if crediti_utilizzati <= 25:
+                        # Ottieni i nomi dei giocatori selezionati come una lista di stringhe
+                        giocatori_selezionati_nomi = [giocatore["nome"] for giocatore in giocatori_selezionati]
+                        # Converti la lista di nomi in una stringa separata da virgole
+                        giocatori_selezionati_stringa = ", ".join(giocatori_selezionati_nomi)
+
+                        # Aggiorna solo la colonna "Giocatore I" della riga corrispondente
+                        existing_data.loc[index_to_update, "Giocatore I "] = giocatori_selezionati_stringa
+                        conn.update(worksheet="Foglio1", data=existing_data)
+                        st.success("Foglio di Google Sheets aggiornato con successo! 💪")
+                    else:
+                        st.warning("I giocatori selezionati hanno un costo maggiore di quanto puoi spendere")
+                
+
+    elif email and email not in  existing_data.values:
+        st.warning("Inserire un'email vailda JESAP")
+
+else:
+    st.metric(label="Countdown", value="00:00:00")
+    st.write("Countdown complete!") 
          
