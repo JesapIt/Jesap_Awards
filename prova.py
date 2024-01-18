@@ -122,8 +122,8 @@ italy_timezone = pytz.timezone('Europe/Rome')
 # Define the target time (assuming you want this to be in Italy's timezone)
 target_time = italy_timezone.localize(datetime(2024, 1, 20, 21, 0, 0))
 
+current_time = datetime.now().astimezone(pytz.timezone('Europe/Rome'))
 # Get the current time in Italy's timezone
-current_time = datetime.now(italy_timezone)
 
 # Calculate the time remaining
 time_remaining = target_time - current_time
@@ -131,11 +131,6 @@ time_remaining = target_time - current_time
 if time_remaining > timedelta(0):  # Check if the target time is in the future
     # Format the time remaining as H:M:S
     
-
-
-
-
-
     st.divider()
     conn = st.connection("gsheets", type=GSheetsConnection)
 
