@@ -14,7 +14,7 @@ ora_corrente = datetime.now()
 
 # Calcola la differenza
 differenza = data_di_destinazione - ora_corrente
-print(differenza)
+st.write(differenza)
 
 # ph = st.empty()
 # N = 5*60
