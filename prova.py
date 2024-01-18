@@ -207,7 +207,7 @@ if time_remaining > timedelta(0):  # Check if the target time is in the future
                     with col2:
                         player_photo_path = f"photos/{giocatore['foto']}" 
                         if(giocatore['foto'] in os.listdir("photos")):
-                            st.image(player_photo_path, caption=giocatore["nome"].split('(')[0], use_column_width=False, width=200)
+                            st.image(player_photo_path, caption=giocatore["nome"].split('(')[0])
 
                     with col3:
                         st.write("")
