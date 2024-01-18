@@ -122,7 +122,7 @@ if time_remaining > timedelta(0):  # Check if the target time is in the future
     hours, remainder = divmod(int(time_remaining.total_seconds()), 3600)
     minutes, seconds = divmod(remainder, 60)
     st.write(f"Ti restano: {hours:02d} ore e {minutes:02d} minuti")
-asdasd
+
 
 
 
