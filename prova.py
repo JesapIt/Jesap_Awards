@@ -107,7 +107,7 @@ st.markdown(background_image, unsafe_allow_html=True)
 st.image("top.png")
 col1, col2, col3 = st.columns([1,7,1])
 st.divider()
-st.markdown('''Questa è la piattaforma creata per decretare il vincitore di un nuovo premio, **il miglior ballatore di fresca di JESAP Consulting** 🏆🥇 
+st.markdown('''Questa è la piattaforma creata per decretare il vincitore dei **FantAwards** 🏆🥇 
 
 Il gioco è intuitivo: hai a disposizione 25 crediti per comporre la tua squadra di JESAPers **scommettendo su chi si porterà più riconoscimenti e premi a casa in questa serata di Awards.** 
 
