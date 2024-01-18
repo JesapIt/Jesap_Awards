@@ -64,8 +64,8 @@ giocatori = [
     {"nome": "Francesco Tonnarini (6 crediti)", "crediti": 6, "foto": 'francesco_tonnarini.jpg'},
     {"nome": "Gabriele La Motta (6 crediti)", "crediti": 6, "foto": 'gabriele_la_motta.jpg'},
     {"nome": "Giacomo Bacchetta (5 crediti)", "crediti": 5, "foto": 'giacomo_bacchetta.jpg'},
-    {"nome": "Giada De Cupis (5 crediti)", "crediti": 5, "foto": 'giada_de_cupis.jpg'},
-    {"nome": "Giorgia Scaglione (5 crediti)", "crediti": 5, "foto": 'giorgia_scaglione.JPG'},
+    {"nome": "Giada De Cupis (5 crediti)", "crediti": 5, "foto": 'giada_de_cupis.png'},
+    {"nome": "Giorgia Scaglione (5 crediti)", "crediti": 5, "foto": 'giorgia_scaglione.png'},
     {"nome": "Giovanni Caldarini (5 crediti)", "crediti": 5, "foto": 'giovanni_caldarini.jpeg'},
     {"nome": "Giovanni Perugini (10 crediti)", "crediti": 10, "foto": 'giovanni_perugini.JPG'},
     {"nome": "Giulia Arcifa (5 crediti)", "crediti": 5, "foto": 'giulia_arcifa.jpg'},
@@ -207,7 +207,7 @@ if time_remaining > timedelta(0):  # Check if the target time is in the future
                     with col2:
                         player_photo_path = f"photos/{giocatore['foto']}" 
                         if(giocatore['foto'] in os.listdir("photos")):
-                            st.image(player_photo_path, caption=giocatore["nome"].split('(')[0])
+                            st.image(player_photo_path, caption=giocatore["nome"].split('(')[0], use_column_width=False, width=200)
 
                     with col3:
                         st.write("")
