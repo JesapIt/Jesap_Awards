@@ -94,7 +94,7 @@ giocatori = [
 
 
 st.markdown(background_image, unsafe_allow_html=True)
-
+st.image("top.png")
 col1, col2, col3 = st.columns([1,7,1])
 
 with col1:
