@@ -181,7 +181,7 @@ if email and  email.lower() in  existing_data.values:
                 with col2:
                     player_photo_path = f"photos/{giocatore['foto']}" 
                     if(giocatore['foto'] in os.listdir("photos")):
-                        st.image(player_photo_path, caption=giocatore["nome"], use_column_width=False, width=200)
+                        st.image(player_photo_path, caption=giocatore["nome"].split('(')[0], use_column_width=False, width=200)
 
                 with col3:
                     st.write("")
