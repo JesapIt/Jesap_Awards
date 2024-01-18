@@ -97,19 +97,19 @@ st.markdown(background_image, unsafe_allow_html=True)
 st.image("top.png")
 col1, col2, col3 = st.columns([1,7,1])
 
-with col1:
-    image = Image.open("logo3.png")
-    new_image = image.resize((100, 100))
-    st.image(new_image)
+# with col1:
+#     image = Image.open("logo3.png")
+#     new_image = image.resize((100, 100))
+#     st.image(new_image)
     
 
-with col2:
-    st.markdown('<h1><span style="color: #D4AF37;">Benvenut* ai FantaAwards!</span></h1>', unsafe_allow_html=True)
+# with col2:
+#     st.markdown('<h1><span style="color: #D4AF37;">Benvenut* ai FantaAwards!</span></h1>', unsafe_allow_html=True)
 
-with col3:
-    image = Image.open("pangocciolo.png")
-    new_image = image.resize((100, 100))
-    st.image(new_image)
+# with col3:
+#     image = Image.open("pangocciolo.png")
+#     new_image = image.resize((100, 100))
+#     st.image(new_image)
 
 
 
