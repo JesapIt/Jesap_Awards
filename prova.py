@@ -11,7 +11,13 @@ import pytz
 
 
 st.set_page_config(page_icon="logo.png", page_title="FantaAwards")
-
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 
 background_image = '''
