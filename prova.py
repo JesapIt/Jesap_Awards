@@ -114,24 +114,28 @@ col1, col2, col3 = st.columns([1,7,1])
 #     new_image = image.resize((100, 100))
 #     st.image(new_image)
 
-# Data per fine modifica
-# Definisci la data e l'ora di destinazione (anno, mese, giorno, ora, minuti, secondi)
-data_di_destinazione = datetime(2024, 1, 20, 21, 00, 00)
+target_date = datetime(2024, 1, 20, 21, 0, 0)
 
-# Ottieni la data e l'ora corrente
-ora_corrente = datetime.now()
+# Get the current time
+current_time = datetime.now()
 
-# Calcola la differenza
-differenza = data_di_destinazione - ora_corrente
-st.write(differenza)
+# Calculate the difference in seconds
+difference = target_date - current_time
+total_seconds = int(difference.total_seconds())
 
-# ph = st.empty()
-# N = 5*60
-# for secs in range(N,0,-1):
-#     mm, ss = secs//60, secs%60
-#     ph.metric("Countdown", f"{mm:02d}:{ss:02d}")
-#     time.sleep(1)
+# Placeholder for the countdown
+placeholder = st.empty()
 
+# Countdown loop
+for remaining_seconds in range(total_seconds, 0, -1):
+    hours, remainder = divmod(remaining_seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    placeholder.metric(label="Countdown", value=f"{hours:02d}:{minutes:02d}:{seconds:02d}")
+    time.sleep(1)
+
+# Message when countdown is over
+placeholder.metric(label="Countdown", value="00:00:00")
+st.write("Countdown complete!")
 
 
 
