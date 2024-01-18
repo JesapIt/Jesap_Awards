@@ -207,7 +207,7 @@ if email and  email.lower() in  existing_data.values:
         for giocatore in giocatori_selezionati:
                 st.markdown(f'<h5> ⭐️ {giocatore["nome"]}</h5>', unsafe_allow_html=True)
 
-        st.markdown( " >Quando hai finito di selezionare i giocatori clicca sul bottone 'Salva' per caricare la tua squadra. ", unsafe_allow_html=True)
+        st.markdown( " >Quando hai finito clicca sul bottone 'Salva' per caricare la tua squadra. ", unsafe_allow_html=True)
         submit_button = st.button("🕺 Salva 💃")
 
 
