@@ -1,12 +1,18 @@
 import pandas as pd
 import streamlit as st
-from streamlit_gsheets import GSheetsConnection
 from PIL import Image
 import time
 from datetime import datetime, timedelta
 import os
 import pytz
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
+# Set up Google Sheets connection
+scope = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
+creds = ServiceAccountCredentials.from_json_keyfile_name('secret.json', scope)
+client = gspread.authorize(creds)
+sheet = client.open_by_url("https://docs.google.com/spreadsheets/d/1C2vW2cbgJMO6nHiTsLDlOu1Pw_VHta8hBdQqXlsH4-0").sheet1
 
 
 
@@ -160,31 +166,18 @@ if time_remaining > timedelta(0):  # Check if the target time is in the future
     # Format the time remaining as H:M:S
     
     st.divider()
-    conn = st.connection("gsheets", type=GSheetsConnection)
 
-    # Lettura dei dati esistenti da Google Sheets
-    existing_data = conn.read(worksheet="Foglio1", usecols=list(range(4)), ttl=5)
-    existing_data = existing_data.dropna(how="all")
-
-
-
-
-
-
-
-
-
-    # Campo di input per l'email nella sidebar
-
-
-        
-
+    
 
     st.markdown('<h5> Inserisci la tua mail <span style="color: #800080; ">JESAP</span> per iniziare a comporre la tua squadra</h5>', unsafe_allow_html=True)
     hours, remainder = divmod(int(time_remaining.total_seconds()), 3600)
     minutes, seconds = divmod(remainder, 60)
     st.write(f"⏰ Ti restano solo {hours:02d} ore e {minutes:02d} minuti per farlo!")
     email = st.text_input("Email:")
+    existing_data = sheet.get_all_records()
+
+    # Check if email exists in the data
+    email_exists = any(row['Email'] == email.lower() for row in existing_data)
 
 
 
@@ -192,7 +185,7 @@ if time_remaining > timedelta(0):  # Check if the target time is in the future
 
     # Bottone di accesso nella sidebar
 
-    if email and  email.lower() in  existing_data.values:
+    if email and  email_exists:
 
         if 'count' not in st.session_state:
             st.session_state.count = 0
@@ -261,23 +254,35 @@ if time_remaining > timedelta(0):  # Check if the target time is in the future
 
 
             if submit_button :
-                    st.balloons()
-                    # Ottieni l'indice della riga corrispondente all'email fornita
-                    index_to_update = existing_data[existing_data['Email'] == email].index
-                    #st.write(index_to_update)
+                st.balloons()
+                
+                # Read the entire sheet data
+                all_records = sheet.get_all_records()
 
+                # Find the row number for the given email
+                row_to_update = None
+                for idx, record in enumerate(all_records, start=2):  # start=2 because sheets are 1-indexed and header is row 1
+                    if record['Email'] == email:
+                        row_to_update = idx
+                        break
+
+                if row_to_update:
                     if crediti_utilizzati <= 25:
-                        # Ottieni i nomi dei giocatori selezionati come una lista di stringhe
+                        # Get the names of the selected players as a list of strings
                         giocatori_selezionati_nomi = [giocatore["nome"] for giocatore in giocatori_selezionati]
-                        # Converti la lista di nomi in una stringa separata da virgole
+                        # Convert the list of names to a comma-separated string
                         giocatori_selezionati_stringa = ", ".join(giocatori_selezionati_nomi)
 
-                        # Aggiorna solo la colonna "Giocatore I" della riga corrispondente
-                        existing_data.loc[index_to_update, "Giocatore I "] = giocatori_selezionati_stringa
-                        conn.update(worksheet="Foglio1", data=existing_data)
+                        # Update the specific cell for "Giocatore I" in the found row
+                        # Assuming "Giocatore I" is in a certain column (e.g., column 3)
+                        sheet.update_cell(row_to_update, 3, giocatori_selezionati_stringa)
+
                         st.success("Foglio di Google Sheets aggiornato con successo! 💪")
                     else:
                         st.warning("I giocatori selezionati hanno un costo maggiore di quanto puoi spendere")
+                else:
+                    st.warning("Email non trovata nel foglio di calcolo.")
+
                 
 
     elif email and email not in  existing_data.values:

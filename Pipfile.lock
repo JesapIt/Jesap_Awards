@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "725b3cf667bd675c98ed563c24db5d7f60aeb82ee334c615c09adc638614aead"
+            "sha256": "ebebd5481e9325fcb0bf705f4aff47e6d99d5f160af22aedb8ce8c308e79f171"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -270,7 +270,7 @@
                 "sha256:1e453d87e0fde23bc5546e33eb684cf8b8c26540615f2f1ae004a9084a29051d",
                 "sha256:3fcef90183f15d3c9233b4caa021a83682f2b2ee678340c42d7ca7d8be98c6d1"
             ],
-            "markers": "python_version >= '3.7'",
+            "index": "pypi",
             "version": "==5.12.4"
         },
         "gspread-dataframe": {
@@ -293,6 +293,14 @@
                 "sha256:98d7f5335253fee9e31ace51d1743bcc80c814cd1bac265d1eefa54a91e79a25"
             ],
             "version": "==3.2.3"
+        },
+        "httplib2": {
+            "hashes": [
+                "sha256:14ae0a53c1ba8f3d37e9e27cf37eabb0fb9980f435ba405d546948b009dd64dc",
+                "sha256:d7a10bc5ef5ab08322488bde8c726eeee5c8618723fdb399597ec58f3d82df81"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+            "version": "==0.22.0"
         },
         "idna": {
             "hashes": [
@@ -457,6 +465,14 @@
             ],
             "markers": "python_version < '3.10'",
             "version": "==1.24.4"
+        },
+        "oauth2client": {
+            "hashes": [
+                "sha256:b8a81cc5d60e2d364f0b1b98f958dbd472887acaf1a5b05e21c28c31a2d6d3ac",
+                "sha256:d486741e451287f69568a4d26d70d9acd73a2bbfa275746c535b4209891cccc6"
+            ],
+            "index": "pypi",
+            "version": "==4.1.3"
         },
         "oauthlib": {
             "hashes": [
@@ -679,6 +695,14 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==2.17.2"
+        },
+        "pyparsing": {
+            "hashes": [
+                "sha256:32c7c0b711493c72ff18a981d24f28aaf9c1fb7ed5e9667c9e84e3db623bdbfb",
+                "sha256:ede28a1a32462f5a9705e07aea48001a08f7cf81a021585011deba701581a0db"
+            ],
+            "markers": "python_version >= '3.1'",
+            "version": "==3.1.1"
         },
         "python-dateutil": {
             "hashes": [
