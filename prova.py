@@ -119,9 +119,7 @@ time_remaining = target_time - current_time
 
 if time_remaining > timedelta(0):  # Check if the target time is in the future
     # Format the time remaining as H:M:S
-    hours, remainder = divmod(int(time_remaining.total_seconds()), 3600)
-    minutes, seconds = divmod(remainder, 60)
-    st.write(f"Ti restano: {hours:02d} ore e {minutes:02d} minuti")
+    
 
 
 
@@ -149,6 +147,9 @@ if time_remaining > timedelta(0):  # Check if the target time is in the future
 
 
     st.markdown('<h5> Inserisci la tua mail <span style="color: #800080; ">JESAP</span> per iniziare a comporre la tua squadra</h5>', unsafe_allow_html=True)
+    hours, remainder = divmod(int(time_remaining.total_seconds()), 3600)
+    minutes, seconds = divmod(remainder, 60)
+    st.write(f"⏰ Ti restano solo: {hours:02d} ore e {minutes:02d} minuti per farlo!")
     email = st.text_input("Email:")
 
 
