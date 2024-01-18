@@ -215,7 +215,7 @@ if email and  email.lower() in  existing_data.values:
                 st.balloons()
                 # Ottieni l'indice della riga corrispondente all'email fornita
                 index_to_update = existing_data[existing_data['Email'] == email].index
-                st.write(index_to_update)
+                #st.write(index_to_update)
 
                 if crediti_utilizzati <= 25:
                     # Ottieni i nomi dei giocatori selezionati come una lista di stringhe
