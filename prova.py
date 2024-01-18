@@ -6,7 +6,7 @@ import os
 
 
 
-st.set_page_config(page_icon="logo.png")
+st.set_page_config(page_icon="logo.png", page_title="FantaAwards")
 
 
 
