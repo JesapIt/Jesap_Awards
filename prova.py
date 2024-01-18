@@ -232,5 +232,5 @@ if email and  email.lower() in  existing_data.values:
             
 
 elif email and email not in  existing_data.values:
-    st.warning("Inserire un'email valida, il dominio deve essere @jesap.it") 
+    st.warning("Inserire un'email vailda di JESAP") 
          
