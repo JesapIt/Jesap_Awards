@@ -121,7 +121,7 @@ if time_remaining > timedelta(0):  # Check if the target time is in the future
     # Format the time remaining as H:M:S
     hours, remainder = divmod(int(time_remaining.total_seconds()), 3600)
     minutes, seconds = divmod(remainder, 60)
-    st.metric(label="Countdown", value=f"{hours:02d}:{minutes:02d}:{seconds:02d}")
+    st.metric(label="Countdown", value=f"{hours:02d}:{minutes:02d}")
 
 
 
