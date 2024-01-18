@@ -60,7 +60,7 @@ giocatori = [
     {"nome": "Francesco Antonelli (5 crediti)", "crediti": 5, "foto": 'francesco_antonelli.jpg'},
     {"nome": "Francesco Cartisano (5 crediti)", "crediti": 5, "foto": 'francesco_cartisano.jpg'},
     {"nome": "Francesco Tarantino (8 crediti)", "crediti": 8, "foto": 'francesco_tarantino.jpg'},
-    {"nome": "Francesco Gargano (5 crediti)", "crediti": 5, "foto": 'francesco_gargano.JPG'},
+    {"nome": "Francesco Gargano (5 crediti)", "crediti": 5, "foto": 'francesco_gargano.jpg'},
     {"nome": "Francesco Tonnarini (6 crediti)", "crediti": 6, "foto": 'francesco_tonnarini.jpg'},
     {"nome": "Gabriele La Motta (6 crediti)", "crediti": 6, "foto": 'gabriele_la_motta.jpg'},
     {"nome": "Giacomo Bacchetta (5 crediti)", "crediti": 5, "foto": 'giacomo_bacchetta.jpg'},
