@@ -217,7 +217,7 @@ if email and  email.lower() in  existing_data.values:
                 index_to_update = existing_data[existing_data['Email'] == email].index
                 st.write(index_to_update)
 
-                if crediti_totali <= 25:
+                if crediti_utilizzati <= 25:
                     # Ottieni i nomi dei giocatori selezionati come una lista di stringhe
                     giocatori_selezionati_nomi = [giocatore["nome"] for giocatore in giocatori_selezionati]
                     # Converti la lista di nomi in una stringa separata da virgole
