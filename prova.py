@@ -7,23 +7,6 @@ from datetime import datetime
 import os
 
 
-# Data per fine modifica
-# Definisci la data e l'ora di destinazione (anno, mese, giorno, ora, minuti, secondi)
-data_di_destinazione = datetime(2024, 1, 20, 21, 00, 00)
-
-# Ottieni la data e l'ora corrente
-ora_corrente = datetime.now()
-
-# Calcola la differenza
-differenza = data_di_destinazione - ora_corrente
-st.write(differenza)
-
-# ph = st.empty()
-# N = 5*60
-# for secs in range(N,0,-1):
-#     mm, ss = secs//60, secs%60
-#     ph.metric("Countdown", f"{mm:02d}:{ss:02d}")
-#     time.sleep(1)
 
 
 st.set_page_config(page_icon="logo.png", page_title="FantaAwards")
@@ -130,6 +113,25 @@ col1, col2, col3 = st.columns([1,7,1])
 #     image = Image.open("pangocciolo.png")
 #     new_image = image.resize((100, 100))
 #     st.image(new_image)
+
+# Data per fine modifica
+# Definisci la data e l'ora di destinazione (anno, mese, giorno, ora, minuti, secondi)
+data_di_destinazione = datetime(2024, 1, 20, 21, 00, 00)
+
+# Ottieni la data e l'ora corrente
+ora_corrente = datetime.now()
+
+# Calcola la differenza
+differenza = data_di_destinazione - ora_corrente
+st.write(differenza)
+
+# ph = st.empty()
+# N = 5*60
+# for secs in range(N,0,-1):
+#     mm, ss = secs//60, secs%60
+#     ph.metric("Countdown", f"{mm:02d}:{ss:02d}")
+#     time.sleep(1)
+
 
 
 
