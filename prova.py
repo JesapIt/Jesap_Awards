@@ -52,7 +52,6 @@ giocatori = [
     {"nome": "Federica Lavini (6 crediti)", "crediti": 6, "foto": 'federica_lavini.jpg'},
     {"nome": "Flavia Sarcinelli (10 crediti)", "crediti": 10, "foto": 'flavia_sarcinelli.jpg'},
     {"nome": "Francesco Antonelli (5 crediti)", "crediti": 5, "foto": 'francesco_antonelli.jpg'},
-    {"nome": "Francesco Arpino (9 crediti)", "crediti": 9, "foto": 'francesco_arpino.jpg'},
     {"nome": "Francesco Cartisano (5 crediti)", "crediti": 5, "foto": 'francesco_cartisano.jpg'},
     {"nome": "Francesco Tarantino (8 crediti)", "crediti": 8, "foto": 'francesco_tarantino.jpg'},
     {"nome": "Francesco Gargano (5 crediti)", "crediti": 5, "foto": 'francesco_gargano.jpg'},
