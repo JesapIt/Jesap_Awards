@@ -253,5 +253,5 @@ if time_remaining > timedelta(0):  # Check if the target time is in the future
 
 else:
     st.metric(label="Countdown", value="00:00:00")
-    st.write("Countdown complete!") 
+    st.markdown(' <h1> <span style="color: #D4AF37;"> Tempo scaduto 😭 </span></h1>') 
          
