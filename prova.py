@@ -106,9 +106,9 @@ st.markdown(background_image, unsafe_allow_html=True)
 st.image("top.png")
 col1, col2, col3 = st.columns([1,7,1])
 st.divider()
-st.markdown('''Questa è la piattaforma creata per decretare il vincitore di un nuovo premio, il miglior ballatore di fresca di JESAP Consulting 🏆🥇 
+st.markdown('''Questa è la piattaforma creata per decretare il vincitore di un nuovo premio, **il miglior ballatore di fresca di JESAP Consulting** 🏆🥇 
 
-Il gioco è intuitivo: hai a disposizione 25 crediti per comporre la tua squadra di JESAPers scommettendo su chi si porterà più riconoscimenti e premi a casa in questa serata di Awards. 
+Il gioco è intuitivo: hai a disposizione 25 crediti per comporre la tua squadra di JESAPers **scommettendo su chi si porterà più riconoscimenti e premi a casa in questa serata di Awards.** 
 
 Vi ricordiamo che i premi sono: 
 - Miglior Associato
@@ -120,14 +120,14 @@ Vi ricordiamo che i premi sono:
 - Miglior Crescita Sostenibile 
 - Miglior Delega 
 
-👀 occhio ai bonus: 
+👀 **occhio ai bonus**: 
 
 +1 se appartiene alla area/delega/team di progetto;
 +2 se si è stati manager della delega o resp/ vice dell’area vincitrice;
 +3 se si è miglior resp/vice;
 +5 per miglior associato ed empowerment femminile. 
 
-Giocate responsabilmente 🤝''')
+**Giocate responsabilmente** 🤝''')
 # with col1:
 #     image = Image.open("logo3.png")
 #     new_image = image.resize((100, 100))
