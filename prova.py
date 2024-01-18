@@ -123,7 +123,7 @@ Vi ricordiamo che i premi sono:
 👀 **occhio ai bonus**: 
 
 - +1 se appartiene alla area/delega/team di progetto vincitore;
-- +2 se si è stati manager della delega o resp/ vice dell’area vincitrice;
+- +2 se si è stati manager della delega, resp/ vice dell’area o pm del progetto vincitore;
 - +3 se si è miglior resp/vice;
 - +5 per miglior associato o empowerment femminile. 
 
