@@ -107,12 +107,14 @@ col1, col2, col3 = st.columns([1,7,1])
     
 
 # with col2:
-#     st.markdown('<h1><span style="color: #D4AF37;">Benvenut* ai FantaAwards!</span></h1>', unsafe_allow_html=True)
+#     st.markdown('<h1><span style="color: #D4AF37;">Benvenuti ai FantaAwards!</span></h1>', unsafe_allow_html=True)
 
 # with col3:
 #     image = Image.open("pangocciolo.png")
 #     new_image = image.resize((100, 100))
 #     st.image(new_image)
+
+
 target_time = datetime(2024, 1, 20, 21, 0, 0)
 current_time = datetime.now()
 time_remaining = target_time - current_time
