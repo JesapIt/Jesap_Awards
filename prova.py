@@ -170,7 +170,7 @@ if email and  email.lower() in  existing_data.values:
                 giocatori.remove(giocatore)
 
                 crediti_utilizzati += prezzo_giocatore
-                if crediti_utilizzati <= 21:
+                if crediti_utilizzati <= 20:
                     spazio.append(widget_counter+1)
 
                 col1, col2, col3 = st.columns([1,1,1])
