@@ -148,7 +148,7 @@ Vi ricordiamo che i premi sono:
 italy_timezone = pytz.timezone('Europe/Rome')
 
 # Define the target time (assuming you want this to be in Italy's timezone)
-target_time = italy_timezone.localize(datetime(2024, 1, 20, 21, 0, 0))
+target_time = italy_timezone.localize(datetime(2024, 1, 20, 12, 0, 0))
 
 current_time = datetime.now().astimezone(pytz.timezone('Europe/Rome'))
 # Get the current time in Italy's timezone
